@@ -66,33 +66,33 @@ public class WebCrawler implements Runnable {
     /**
      * The thread within which this crawler instance is running.
      */
-    private Thread myThread;
+    protected Thread myThread;
 
     /**
      * The parser that is used by this crawler instance to parse the content of the fetched pages.
      */
-    private Parser parser;
+    protected Parser parser;
 
     /**
      * The fetcher that is used by this crawler instance to fetch the content of pages from the web.
      */
-    private PageFetcher pageFetcher;
+    protected PageFetcher pageFetcher;
 
     /**
      * The RobotstxtServer instance that is used by this crawler instance to
      * determine whether the crawler is allowed to crawl the content of each page.
      */
-    private RobotstxtServer robotstxtServer;
+    protected RobotstxtServer robotstxtServer;
 
     /**
      * The DocIDServer that is used by this crawler instance to map each URL to a unique docid.
      */
-    private DocIDServer docIdServer;
+    protected DocIDServer docIdServer;
 
     /**
      * The Frontier object that manages the crawl queue.
      */
-    private Frontier frontier;
+    protected Frontier frontier;
 
     /**
      * Is the current crawler instance waiting for new URLs? This field is
@@ -100,11 +100,11 @@ public class WebCrawler implements Runnable {
      * instances are waiting for new URLs and therefore there is no more work
      * and crawling can be stopped.
      */
-    private boolean isWaitingForNewURLs;
+    protected boolean isWaitingForNewURLs;
 
-    private Throwable error;
+    protected Throwable error;
 
-    private int batchReadSize;
+    protected int batchReadSize;
 
     /**
      * Initializes the current instance of the crawler
@@ -410,7 +410,7 @@ public class WebCrawler implements Runnable {
         // Sub-classed should override this to add their custom functionality
     }
 
-    private void processPage(WebURL curURL) throws IOException, InterruptedException, ParseException {
+    protected void processPage(WebURL curURL) throws IOException, InterruptedException, ParseException {
         PageFetchResult fetchResult = null;
         Page page = new Page(curURL);
         try {
